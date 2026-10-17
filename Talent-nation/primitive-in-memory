@@ -1,0 +1,177 @@
+LESSON CONTENT 
+
+What is a primitive?
+In programming, a primitive is a basic data type that is built into the language. It is not made up of smaller user-defined parts. Python has several primitive types, but the most common scalar ones are:
+
+int — integers, like 5, -3, 0, 100000.
+float — numbers with decimal points, like 3.14, -0.5, 2.0.
+str — strings, like "Amaka", 'Lagos', "Hello".
+bool — booleans, True and False.
+NoneType — the type of the special value None.
+These are the basic building blocks you will use constantly.
+
+Let us explore each one and think about how it lives in memory.
+
+int — integers
+An int is a whole number. It can be positive, negative, or zero.
+
+Examples:
+
+age = 22
+debt = -1500
+zero = 0
+large_population = 200000000
+In Python, integers can be arbitrarily large, limited only by available memory. You do not need to worry about a fixed size for normal work.
+
+When you write age = 22, Python creates an integer object with the value 22 and binds age to it.
+
+Integer objects are immutable. We will discuss immutability shortly.
+
+float — floating-point numbers
+A float is a number with a decimal point. It represents a real number approximation.
+
+Examples:
+
+price = 1500.99
+temperature = 33.5
+negative_rate = -0.75
+Floats are useful for measurements, money that includes kobo, percentages, and scientific values.
+
+In Python, a floating-point number is stored using a binary representation that may introduce tiny rounding errors. For example:
+
+print(0.1 + 0.2)
+This prints 0.30000000000000004 on many systems. This is not a Python bug. It is the nature of binary floating-point representation. For now, know that floats are approximate. When exact decimal arithmetic is required, other tools are available.
+
+str — strings
+A str is a sequence of characters. It is used for text.
+
+Examples:
+
+name = "Chidi"
+city = 'Enugu'
+message = "Hello, how are you?"
+Strings can be written with single quotes, double quotes, or triple quotes for multiple lines. They are used for names, addresses, messages, and any human-readable text.
+
+In memory, a string is a sequence of characters. Each character is stored in order. But the string object as a whole is the value.
+
+bool — booleans
+A bool is a truth value. It has only two possible values: True and False.
+
+Booleans are the result of comparisons and conditions.
+
+is_adult = age >= 18
+has_balance = balance > 0
+is_adult and has_balance are boolean variables. They refer to either True or False.
+
+Booleans are important for decision-making. An if statement checks whether a boolean expression is true.
+
+
+
+Basic scalar immutability
+The primitive scalar types in Python are immutable. This means once an object is created, its value cannot be changed.
+
+For an integer, there is no operation that changes 5 into 6. Instead, if you want to change a value, you create a new integer object.
+
+For example:
+
+count = 10
+count = count + 1
+At first, count points to the integer 10. Then Python evaluates count + 1, which creates a new integer object 11. Finally, count is rebound to 11. The old integer 10 is not modified. It is discarded.
+
+The same is true for strings.
+
+greeting = "Hello"
+greeting = greeting + "!"
+Python creates a new string "Hello!". The old string "Hello" is not changed. greeting now points to the new string.
+
+Immutability is important. It means you can pass a number or string around without worrying that someone will change it behind your back. The only way to “change” the value is to rebind a name to a different object.
+
+Think of an account number. You cannot change the digits of an account number. If the number is wrong, you create a new number. The old one remains what it was.
+
+
+
+Why immutability matters
+Immutability makes code safer and easier to reason about.
+
+If two variables point to the same immutable object, no operation can change that object through one variable and surprise the other. Any operation that appears to change one variable simply rebinds that variable to a new object.
+
+a = "rice"
+b = a
+a = a + " and beans"
+print(b)   # rice
+b still points to "rice". a now points to "rice and beans". The original string was never altered.
+
+This is different from mutable objects, where changes through one reference are visible through another. We will study mutability later. For now, know that primitives are safe.
+
+None / NoneType
+None is a special value in Python. It represents the absence of a value or “nothing here.”
+
+It is often used as a default when there is no meaningful data.
+
+middle_name = None
+Here, middle_name is a name bound to None. It means “this person has no middle name” or “we have not assigned a middle name yet.”
+
+None is the only value of type NoneType. You can check for it with is None.
+
+if middle_name is None:
+    print("No middle name")
+None is often returned by functions that do not explicitly return a value. For example, print() returns None.
+
+result = print("Hello")
+print(result)   # None
+This can be confusing at first. The print function displays text to stdout, but it returns None. The value None is real and has a type.
+
+
+
+How primitives live in memory
+When you create a primitive, Python allocates memory for the object. The exact location is not usually important to you, but Python knows it.
+
+For small integers and short strings, Python may cache objects and reuse them. For example, small integers from -5 to 256 are often preallocated. This means the integer 5 may be the same object each time it appears. This is an optimization. Do not rely on it for correctness, but know that object identity can be surprising.
+
+For most work, you should think of each assignment as creating or obtaining an object, then binding the name.
+
+
+
+analogy
+Think of primitive types as different kinds of goods in a market.
+
+int is like a bag of yams counted in whole tubers. You cannot have half a yam in an integer count.
+float is like measuring groundnut oil in liters. You can have 1.5 liters.
+str is like writing a customer’s name on a receipt. It is text.
+bool is like a yes/no answer. Did the customer pay? Yes or No.
+None is like an empty bucket. It exists, but it has no content yet.
+Immutability means you cannot change the goods inside a sealed bag. You can replace the bag with another bag, but you cannot tear it open and modify the contents.
+
+
+
+Common mistakes and misconceptions
+A common mistake is to think int and float are the same. They are not. 5 and 5.0 are different types.
+
+Another mistake is to put quotation marks around a number and think it is still numeric. "5" is a string, not an integer. It cannot be added to another number until converted.
+
+A third mistake is to assume None is the same as False or 0. It is not. None is a separate value and type.
+
+A fourth mistake is to think that adding a string creates a modified string in place. It creates a new string object.
+
+A fifth mistake is to treat True and False as strings. They are not strings. They are booleans. "True" is a string, not a boolean.
+
+A sixth mistake is to use int or float as variable names. They are built-in names, and shadowing them can cause problems later. Though not strict keywords, avoid using them as variable names.
+
+
+
+Summary
+Primitive scalar types include int, float, str, bool, and None.
+Integers are whole numbers.
+Floats are decimal approximations.
+Strings are sequences of text characters.
+Booleans are True or False.
+None represents the absence of a value.
+These types are immutable.
+Immutability means operations create new objects rather than modifying existing ones.
+
+
+Additional Resources
+Python Documentation: Built-in Types
+Python Documentation: Numbers
+Real Python: Basic Data Types in Python
+Programiz: Python Data Types
