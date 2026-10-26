@@ -17,7 +17,7 @@ Scalar truthiness
 For the scalar types you have learned so far, the rules are simple.
 
 The following scalar values are falsey:
-
+```python
 False
 None
 0
@@ -58,7 +58,7 @@ Output:
 
 Non-empty string is truthy
 Notice that "0" is a non-empty string. It is truthy, even though the numeric 0 is falsey. The string "0" is not the same as the integer 0. This is a common source of confusion.
-
+```
  
  
 Falsey values in decision-making
@@ -74,13 +74,14 @@ else:
 If the user types nothing and just presses Enter, input() returns an empty string "". Python treats that empty string as falsey, so the else branch runs. This is a clean way to check for empty input.
 
 Similarly, if you have a numeric balance:
-
+```python
 balance = 0
 if balance:
     print("You have money")
 else:
     print("Balance is zero")
 Here, 0 is falsey, so the message says “Balance is zero.”
+```
 
 However, be careful. A balance of 0 is not the same as a missing balance. In some business logic, zero might be a valid state, but the truthiness check treats it the same as None or an empty string. If you need to distinguish between “zero” and “missing,” you should use explicit comparisons.
 
@@ -105,7 +106,7 @@ bool() as an observation tool
 Python has a built-in function called bool(). It takes any value and returns either True or False based on Python’s truthiness rules.
 
 You can use bool() to observe truthiness directly without writing an if statement.
-
+```python
 print(bool(0))
 print(bool(1))
 print(bool(""))
@@ -130,6 +131,7 @@ print(bool(-7))
 Output:
 
 True
+```
 Even negative numbers are truthy. The only falsey number is 0 for integers and 0.0 for floats.
 
  
